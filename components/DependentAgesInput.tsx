@@ -1,5 +1,7 @@
 'use client'
 
+import { NumberInput } from '@policyengine/ui-kit'
+
 interface DependentAgesInputProps {
   ages: number[]
   onChange: (ages: number[]) => void
@@ -23,21 +25,17 @@ export function DependentAgesInput({ ages, onChange }: DependentAgesInputProps) 
       <label className="text-sm font-medium text-foreground">
         Dependent ages
       </label>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
         {ages.map((age, i) => (
-          <div key={i} className="flex flex-col gap-1">
-            <label className="text-xs text-muted-foreground">
-              Dependent {i + 1}
-            </label>
-            <input
-              type="number"
-              min={0}
-              max={18}
-              value={age}
-              onChange={(e) => handleChange(i, Number(e.target.value))}
-              className="w-16 rounded-md border border-border bg-background px-2 py-1 text-sm text-foreground"
-            />
-          </div>
+          <NumberInput
+            key={i}
+            label={`Dependent ${i + 1}`}
+            value={age}
+            onChange={(v) => handleChange(i, v)}
+            min={0}
+            max={18}
+            className="w-20"
+          />
         ))}
       </div>
     </div>
