@@ -1,0 +1,31 @@
+{
+  "name": "va-reform-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@policyengine/ui-kit": "file:../policyengine-ui-kit",
+    "@tanstack/react-query": "^5",
+    "next": "^14",
+    "react": "^19",
+    "react-dom": "^19",
+    "recharts": "^2",
+    "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6",
+    "@testing-library/react": "^16",
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "4.3.4",
+    "jsdom": "^25",
+    "typescript": "^5",
+    "vitest": "^2"
+  }
+}
