@@ -77,9 +77,9 @@ FILING_STATUS_MAP = {
     "head_of_household": "HEAD_OF_HOUSEHOLD",
 }
 
-# Federal income tax bracket rate parameter paths (7 brackets, 1-indexed)
+# Federal income tax bracket rate parameter paths (7 brackets, 1-indexed keys in YAML)
 FEDERAL_BRACKET_RATE_PATHS = [
-    f"gov.irs.income.bracket.rates[{i}]" for i in range(7)
+    f"gov.irs.income.bracket.rates[{i}]" for i in range(1, 8)
 ]
 
 # Federal CTC parameter paths
@@ -88,14 +88,14 @@ FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH = "gov.irs.credits.ctc.phase_out.threshold"
 FEDERAL_CTC_REFUNDABLE_MAX_PATH = "gov.irs.credits.ctc.refundable.individual_max"
 FEDERAL_CTC_FULLY_REFUNDABLE_PATH = "gov.irs.credits.ctc.refundable.fully_refundable"
 
-# Federal EITC max parameter paths (indexed by number of children: 0, 1, 2, 3)
+# Federal EITC max parameter paths (bracket scale, 0-indexed, needs .amount sub-key)
 FEDERAL_EITC_MAX_PATHS = [
-    f"gov.irs.credits.eitc.max[{i}]" for i in range(4)
+    f"gov.irs.credits.eitc.max[{i}].amount" for i in range(4)
 ]
 
-# Virginia income tax rate parameter paths (4 brackets, 0-indexed)
+# Virginia income tax rate parameter paths (bracket scale, 0-indexed, needs .rate sub-key)
 VA_RATE_PATHS = [
-    f"gov.states.va.tax.income.rates[{i}]" for i in range(4)
+    f"gov.states.va.tax.income.rates[{i}].rate" for i in range(4)
 ]
 
 # Virginia standard deduction
