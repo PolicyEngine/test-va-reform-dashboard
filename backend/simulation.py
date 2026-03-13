@@ -79,7 +79,7 @@ FILING_STATUS_MAP = {
 
 # Federal income tax bracket rate parameter paths (7 brackets, 1-indexed keys in YAML)
 FEDERAL_BRACKET_RATE_PATHS = [
-    f"gov.irs.income.bracket.rates[{i}]" for i in range(1, 8)
+    f"gov.irs.income.bracket.rates.{i}" for i in range(1, 8)
 ]
 
 # Federal CTC parameter paths
@@ -228,19 +228,19 @@ def build_reform_object(reform_params: ReformParams) -> Reform:
     # Federal CTC phase-out thresholds (filing-status-indexed)
     # SINGLE and HEAD_OF_HOUSEHOLD use the single threshold;
     # JOINT and SURVIVING_SPOUSE use the joint threshold
-    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}[SINGLE]"] = {
+    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}.SINGLE"] = {
         period_key: reform_params.federal_ctc_phase_out_threshold_single
     }
-    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}[HEAD_OF_HOUSEHOLD]"] = {
+    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}.HEAD_OF_HOUSEHOLD"] = {
         period_key: reform_params.federal_ctc_phase_out_threshold_single
     }
-    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}[JOINT]"] = {
+    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}.JOINT"] = {
         period_key: reform_params.federal_ctc_phase_out_threshold_joint
     }
-    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}[SURVIVING_SPOUSE]"] = {
+    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}.SURVIVING_SPOUSE"] = {
         period_key: reform_params.federal_ctc_phase_out_threshold_joint
     }
-    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}[SEPARATE]"] = {
+    reform_dict[f"{FEDERAL_CTC_PHASE_OUT_THRESHOLD_PATH}.SEPARATE"] = {
         period_key: reform_params.federal_ctc_phase_out_threshold_single
     }
 
@@ -277,7 +277,7 @@ def build_reform_object(reform_params: ReformParams) -> Reform:
     # Virginia standard deduction (filing-status-indexed)
     if reform_params.va_standard_deduction is not None:
         for fs in ["SINGLE", "JOINT", "SEPARATE", "HEAD_OF_HOUSEHOLD", "SURVIVING_SPOUSE"]:
-            reform_dict[f"{VA_STANDARD_DEDUCTION_PATH}[{fs}]"] = {
+            reform_dict[f"{VA_STANDARD_DEDUCTION_PATH}.{fs}"] = {
                 period_key: reform_params.va_standard_deduction
             }
 
